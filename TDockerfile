@@ -1,2 +1,2 @@
 FROM 172.30.1.1:5000/openshift/python:latest
-COPY reorg.sh /tmp/TOOL
+COPY reorg.sh /tmp/TOOL/
