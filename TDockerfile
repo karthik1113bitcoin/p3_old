@@ -1,2 +1,4 @@
 FROM 172.30.1.1:5000/openshift/python:latest
 COPY reorg.sh /tmp/TOOL/
+USER 1001
+RUN /bin/bash -c 'chmod -R 777 /tmp/TOOL/'
