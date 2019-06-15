@@ -1,10 +1,34 @@
 kind: Template
 apiVersion: v1
-objects: 
+objects:
+      - kind: ImageStream
+        apiVersion: v1
+        metadata:
+          name: release_image
+          annotations:
+            openshift.io/display-name: release_image 
+        spec:
+          tags:
+            - name: 'latest'
+          from:
+              kind: DockerImage 
+              name: '172.30.1.1:5000/p3/release_image:latest'
+      - kind: ImageStream
+        apiVersion: v1
+        metadata:
+          name: cn_finlistval
+          annotations:
+            openshift.io/display-name: cn_finlistval 
+        spec:
+          tags:
+            - name: 'latest'
+          from:
+              kind: DockerImage 
+              name: '172.30.1.1:5000/p3/cn_finlistval:latest'
       - kind: BuildConfig
         apiVersion: v1
         metadata: 
-          name: 3build-1
+          name: 3bc
         annotations: 
           description: The deployable image 3rd category
           template.alpha.openshift.io/wait-for-ready: true
@@ -25,8 +49,8 @@ objects:
               dockerfilePath: 3dockerfile
           output: 
             to: 
-              kind: DockerImage
-              name: 172.30.1.1:5000/p2/jk_cn_release:latest
+              kind: ImageStreamTag
+              name: cn_finlistval:latest
 parameters:
   - name: GENERIC_WEBHOOK_SECRET
     description: A secret string used to configure the GitHub webhook
