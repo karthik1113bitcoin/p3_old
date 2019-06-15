@@ -1,0 +1,3 @@
+FROM dbs/dbs_finlistval:latest
+COPY /tmp/prev/cust/ ${FC_INSTALL_PATH}/cust
+COPY /tmp/curr/cust/* ${FC_INSTALL_PATH}/cust
