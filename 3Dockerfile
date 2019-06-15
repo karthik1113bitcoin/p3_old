@@ -1,5 +1,5 @@
 FROM cn_finlistval:latest AS current-image
 COPY ${FC_INSTALL_PATH}/cust/ /tmp/curr/
-FROM 172.30.1.1:5000/dbs/dbs_finlistval:latest
+FROM 172.30.1.1:5000/p3/dbs_finlistval:latest
 COPY --from=current-image /tmp/curr/cust ${FC_INSTALL_PATH}/cust
 COPY /tmp/release/cust/* ${FC_INSTALL_PATH}/cust/
