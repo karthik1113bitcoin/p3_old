@@ -11,10 +11,10 @@ objects:
         spec: 
           source: 
             git: 
-              uri: https://github.com/karthik1113bitcoin/dbs_cust.git
+              uri: https://github.com/karthik1113bitcoin/p3.git
           strategy: 
             dockerStrategy: 
-              dockerfilePath: release_dockerfile
+              dockerfilePath: 3dockerfile
         output: 
             to: 
               kind: DockerImage
