@@ -1,3 +1,5 @@
+FROM p3/cn_finlistval:latest AS current-image
+COPY ${FC_INSTALL_PATH}/cust/ /tmp/curr/
 FROM dbs/dbs_finlistval:latest
 COPY /tmp/prev/cust/ ${FC_INSTALL_PATH}/cust
-COPY /tmp/curr/cust/* ${FC_INSTALL_PATH}/cust
+COPY --from=current-image /tmp/curr/cust/* ${FC_INSTALL_PATH}/cust
